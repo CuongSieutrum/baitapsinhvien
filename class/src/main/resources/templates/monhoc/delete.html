@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <th:block th:replace="layout::link-css"></th:block>
+    <title>Xác nhận xóa môn học</title>
+</head>
+<body>
+<th:block th:replace="layout::header"></th:block>
+<div class="container">
+    <h1>Xác nhận xóa Môn học</h1>
+    <form th:action="@{/monhoc/delete}" method="post">
+        <div class="form-group">
+            <label for="tenMonhoc">Tên môn học:</label>
+            <!-- Điều chỉnh tên thuộc tính để phù hợp với đối tượng -->
+            <input type="text" class="form-control" id="tenMonhoc" name="tenMonhoc" th:value="${monhoc.tenMonHoc}" readonly />
+        </div>
+        <!-- Sửa đổi thuộc tính để truyền mã môn học thay vì tên môn học -->
+        <input type="hidden" name="maMon" th:value="${monhoc.maMon}" />
+        <input type="submit" value="Xóa" />
+    </form>
+</div>
+<th:block th:replace="layout::footer"></th:block>
+</body>
+</html>
